@@ -1,0 +1,148 @@
+
+*{
+    padding:0;
+    margin: 0;
+    font-family:'Oswald', sans-serif;
+    box-sizing: border-box;
+}
+.first{
+    
+    
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 45px;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+.logo{
+    color:rgb(9, 7, 7);
+    font-size: 35px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+span{
+    color: red;
+}
+nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px 25px;
+}
+nav ul li a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+    nav ul li a:hover{
+color: red;
+transition: .4s;
+}
+    .content{
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+
+}
+h1{
+    color: black;
+    margin: 20px 0px 20px;
+    font-size: 75px;
+}
+    h3{
+    color: black;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+h4{
+    color: #f9004d;
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+.email form{
+    width:380px;
+    max-width: 100%;
+    position: relative;
+}
+.email form input:first-child{
+    display: inline-block;
+    width: 100%;
+    padding: 14px 130px 14px 15px;
+    border: 2px solid #f9004d;
+    outline: none;
+    border-radius: 30px;
+
+}
+.email form input:last-child{
+position: absolute;
+display: inline-block;
+outline: none;
+border: none;
+padding: 10px 30px;
+border-radius: 30px;
+background-color: #f9004d;
+color: white;
+box-shadow: 0px 0px 5px #000, 0px 0px 15px #858585;
+top: 6px;
+right: 6px;
+
+}
+.about{
+    width: 100%;
+    padding: 100% 0px;
+    background-color:  #40528e;
+
+}
+.about img{
+    height: auto;
+    width: 430px;
+
+
+}
+
+.main{
+    padding-left: 50px;
+    width: 1000px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.about-text h2{
+    padding-left: 50px;
+    color: white;
+    font-size: 75px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+
+}
+.about-text h5{
+    color:white;
+    letter-spacing: 2px;
+    font-size: 22px;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+}
+.about-text p{
+    padding-left: 50px;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 28px;
+    font-size:18;
+    margin-bottom: 45px;
+}
+.skills{
+    background-color: #40528e;
+    padding-left: 50px;
+    padding-bottom: 300px;
+}
+.Prof-dev{
+    background-color: #40528e;
+    padding-left: 50px;
+    padding-bottom: 300px;
+}
