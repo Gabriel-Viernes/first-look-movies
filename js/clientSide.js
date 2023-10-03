@@ -12,6 +12,22 @@ console.log(apiUrl);
 // REDDIT USERNAME: movieLookup
 // REDDIT PASSWORD: keyboard
 
+// fetch(apiUrl)
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response.json();
+//   })
+//   .then(data => {
+//     // Handle the data received from the OMDB API
+//     console.log(data);
+//   })
+//   .catch(error => {
+//     // Handle any errors that occurred during the fetch
+//     console.error('Fetch error:', error);
+//   });
+
 
 async function fetchMovieData() {
     try {
@@ -34,22 +50,20 @@ async function fetchMovieData() {
   fetchMovieData();
 
 
-fetch(apiUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+
+
+async function getRedditAPI(input) {
+    let url = `https://api.reddit.com/r/movies/search/?q=${input}&restrict_sr=1`
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Reddit network response failed');
+        }
+        const data = await response.json();
+    } catch (error) {
+        console.error('Reddit fetch error:' + error)
     }
-    return response.json();
-  })
-  .then(data => {
-    // Handle the data received from the OMDB API
-    console.log(data);
-  })
-  .catch(error => {
-    // Handle any errors that occurred during the fetch
-    console.error('Fetch error:', error);
-  });
-
-
+    return data;
+}
 
 
