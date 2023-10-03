@@ -23,6 +23,7 @@
 //     console.error('Fetch error:', error);
 //   });
 
+
 // encodeURIComponent replaces non english characters with escape sequences that can be read by APIs
 async function getOmdbData(movieTitle) {
     const apiUrl = `http://www.omdbapi.com/?apikey=4efa80bc&t=${encodeURIComponent(movieTitle)}`
@@ -45,6 +46,11 @@ async function getOmdbData(movieTitle) {
 
 async function getRedditAPI(input) {
     let url = `https://api.reddit.com/r/movies/search/?q=${encodeURIComponent(input)}&restrict_sr=1`
+}
+
+
+async function getRedditAPI(input) {
+    let url = `https://api.reddit.com/r/movies/search/?q=${input}&restrict_sr=1`
     try {
         const response = await fetch(url);
         if (!response.ok) {
