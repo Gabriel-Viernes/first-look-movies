@@ -63,12 +63,12 @@ h4{
     letter-spacing: 2px;
     font-size: 20px;
 }
-.email form{
+.search-bar form{
     width:380px;
     max-width: 100%;
     position: relative;
 }
-.email form input:first-child{
+.search-bar form input:first-child{
     display: inline-block;
     width: 100%;
     padding: 14px 130px 14px 15px;
@@ -77,7 +77,7 @@ h4{
     border-radius: 30px;
 
 }
-.email form input:last-child{
+.search-bar form input:last-child{
 position: absolute;
 display: inline-block;
 outline: none;
@@ -97,12 +97,7 @@ right: 6px;
     background-color:  #40528e;
 
 }
-.about img{
-    height: auto;
-    width: 430px;
 
-
-}
 
 .main{
     padding-left: 50px;
@@ -136,7 +131,7 @@ right: 6px;
     font-size:18;
     margin-bottom: 45px;
 }
-.skills{
+.OMDB{
     background-color: #40528e;
     padding-left: 50px;
     padding-bottom: 300px;
