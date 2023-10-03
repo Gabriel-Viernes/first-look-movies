@@ -23,6 +23,9 @@
 //     console.error('Fetch error:', error);
 //   });
 
+let omdbElement = document.getElementById('placeholder omdb element');
+let redditElement = document.getElementById('placeholder reddit id')
+
 
 // encodeURIComponent replaces non english characters with escape sequences that can be read by APIs
 async function getOmdbData(movieTitle) {
@@ -46,11 +49,6 @@ async function getOmdbData(movieTitle) {
 
 async function getRedditAPI(input) {
     let url = `https://api.reddit.com/r/movies/search/?q=${encodeURIComponent(input)}&restrict_sr=1`
-}
-
-
-async function getRedditAPI(input) {
-    let url = `https://api.reddit.com/r/movies/search/?q=${input}&restrict_sr=1`
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -62,5 +60,18 @@ async function getRedditAPI(input) {
     }
     return data;
 }
+
+async function displaySearch() {
+  let input = document.getElementById('movie-search').value;
+  if (input === '') {
+    console.log('nothing inputted');
+  } else {
+    let omdbData = await getOmdbData(input);
+    let redditData = await getRedditAPI(input);
+  }
+}
+// placeholder id for submit
+document.getElementById('//placeholder for submit button').addEventListener('click', displaySearch);
+
 
 
