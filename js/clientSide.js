@@ -12,13 +12,26 @@ console.log(apiUrl);
 // REDDIT USERNAME: movieLookup
 // REDDIT PASSWORD: keyboard
 
-const logMoviesFunction = async () => {
-    const response = await fetch('apiUrl');
-     const user = await response.json();
-        console.log(user)
-     //return user
-   }
-logMoviesFunction()
+
+async function fetchMovieData() {
+    try {
+      const response = await fetch(apiUrl);
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      // Handle the data received from the OMDB API
+      console.log(data);
+    } catch (error) {
+      // Handle any errors that occurred during the fetch
+      console.error('Fetch error:', error);
+    }
+  }
+  
+  // Call the async function to fetch movie data
+  fetchMovieData();
 
 
 fetch(apiUrl)
