@@ -68,6 +68,8 @@ async function displaySearch() {
   } else {
     let omdbData = await getOmdbData(input);
     let redditData = await getRedditAPI(input);
+    // negash's function
+    displayReddit(redditData);
   }
 }
 
