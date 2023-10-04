@@ -70,6 +70,19 @@ async function displaySearch() {
     let redditData = await getRedditAPI(input);
   }
 }
+
+function displayReddit(data) {
+  let card = document.createElement('div')
+  for (let i = 0; i < data.data.children.length; i++) {
+    card.innerHTML(`
+      <h3>${data.data.children[i].data.title}<a href = ${data.data.children[i].data.url}>[Link]</a></h3>
+      <p>${data.data.children[i].data.author}</p>
+      ${data.data.children[i].data.selftext_html}
+    `)
+  }
+  document.getElementById('placeholder').append(card)
+
+}
 // placeholder id for submit
 document.getElementById('//placeholder for submit button').addEventListener('click', displaySearch);
 
