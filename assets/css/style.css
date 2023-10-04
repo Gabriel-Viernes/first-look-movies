@@ -4,11 +4,8 @@
     margin: 0;
     font-family:'Oswald', sans-serif;
     box-sizing: border-box;
-}
-.first{
-    
-    
-}
+}  
+
 nav{
     display: flex;
     align-items: center;
@@ -16,6 +13,7 @@ nav{
     padding-top: 45px;
     padding-left: 8%;
     padding-right: 8%;
+    background-color: white;
 }
 .logo{
     color:rgb(9, 7, 7);
@@ -132,12 +130,15 @@ right: 6px;
     margin-bottom: 45px;
 }
 .OMDB{
-    background-color: #40528e;
+    background-color: #5d30ac;
     padding-left: 50px;
     padding-bottom: 300px;
 }
 .Prof-dev{
-    background-color: #40528e;
+    background-color: #53d113;
     padding-left: 50px;
     padding-bottom: 300px;
+}
+body{
+    background-color: #40528e;
 }
