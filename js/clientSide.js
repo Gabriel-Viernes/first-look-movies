@@ -69,97 +69,106 @@ async function displaySearch() {
     let omdbData = await getOmdbData(input);
     let redditData = await getRedditAPI(input);
     // negash's function
-  //   let card = document.createElement('div')
-  // for (let i = 0; i < data.data.children.length; i++) {
-  //   card.innerHTML(`
-  //     <h3>${data.data.children[i].data.title}<a href = ${data.data.children[i].data.url}>[Link]</a></h3>
-  //     <p>${data.data.children[i].data.year}</p>
-  //     <p>${data.data.children[i].data.Released}</p>
-  //     <p>${data.data.children[i].data.Runtime}</p>
-  //     <p>${data.data.children[i].data.Genre}</p>
-  //     <p>${data.data.children[i].data.Director}</p>
-  //     <p>${data.data.children[i].data.Writer}</p>
-  //     <p>${data.data.children[i].data.Actors}</p>
-  //     <p>${data.data.children[i].data.Plot}</p>
-  //     <p>${data.data.children[i].data.Language}</p>
-  //     <p>${data.data.children[i].data.Country}</p>
-  //     <p>${data.data.children[i].data.Awards}</p>
-  //     <p>${data.data.children[i].data.Poster}</p>
-  //     ${data.data.children[i].data.Rated}
 
-  function displayMovieData(movieData) {
-    const movieDetailsContainer = document.getElementById('movieDetails');
-  
-    // Create HTML elements to display the movie details
-    const titleElement = document.createElement('h1');
-    titleElement.textContent = movieData.Title;
-    const yearElement = document.createElement('p');
-    yearElement.textContent = `Year: ${movieData.Year}`;
-    const ratedElement = document.createElement('p');
-    yearElement.textContent = movieData.Rated;
-    const releasedElement = document.createElement('p');
-    yearElement.textContent = movieData.Released;
-    const runtimeElement = document.createElement('p');
-    yearElement.textContent = movieData.Runtime;
-    const genreElement = document.createElement('p');
-    yearElement.textContent = movieData.Genre;
-    const directorElement = document.createElement('p');
-    yearElement.textContent = movieData.Director;
-    const writerElement = document.createElement('p');
-    yearElement.textContent = movieData.Writer;
-    const actorsElement = document.createElement('p');
-    yearElement.textContent = movieData.Actors;
-    const plotElement = document.createElement('p');
-    yearElement.textContent = movieData.Plot;
-    const languageElement = document.createElement('p');
-    yearElement.textContent = movieData.Language;
-    const countryElement = document.createElement('p');
-    yearElement.textContent = movieData.Country;
-    const awardsElement = document.createElement('p');
-    yearElement.textContent = movieData.Awards;
-    const posterElement = document.createElement('p');
-    yearElement.textContent = movieData.Poster;
-    Rating:
 
-    const metascoreElement = document.createElement('p');
-    yearElement.textContent = movieData.Metascore;
-    const imdbratingElement = document.createElement('p');
-    yearElement.textContent = movieData.imdbRating;
-    const imdbvotesElement = document.createElement('p');
-    yearElement.textContent = movieData.imdbVotes;
-    // Add more elements for other details as needed
-  
-    // Append the elements to the container
-    movieDetailsContainer.appendChild(titleElement);
-    movieDetailsContainer.appendChild(yearElement);
-    movieDetailsContainer.appendChild(ratedElement);
-    movieDetailsContainer.appendChild(releasedElement);
-    movieDetailsContainer.appendChild(runtimeElement);
-    movieDetailsContainer.appendChild(genreElement);
-    movieDetailsContainer.appendChild(directorElement);
-    movieDetailsContainer.appendChild(writerElement);
-    movieDetailsContainer.appendChild(actorsElement);
-    movieDetailsContainer.appendChild(plotElement);
-    movieDetailsContainer.appendChild(languageElement);
-    movieDetailsContainer.appendChild(countryElement);
-  
-    // Add more elements to display other details
-  }
-  
-  // Call the fetchMovieData function to fetch and display the data
-  fetchMovieData();
- 
-  
-  
-  
-  
-  
-  
 
-    `)
+  
+    // Call the fetchMovieData function to fetch and display the data
+    displayMovieData();
     displayReddit(redditData);
   }
 }
+
+// function displayMovieData(movieData) {
+//   const movieDetailsContainer = document.getElementById('movieDetails');
+
+//   // Create HTML elements to display the movie details
+//   const titleElement = document.createElement('h1');
+//   titleElement.textContent = movieData.Title;
+//   const yearElement = document.createElement('p');
+//   yearElement.textContent = `Year: ${movieData.Year}`;
+//   const ratedElement = document.createElement('p');
+//   yearElement.textContent = movieData.Rated;
+//   const releasedElement = document.createElement('p');
+//   yearElement.textContent = movieData.Released;
+//   const runtimeElement = document.createElement('p');
+//   yearElement.textContent = movieData.Runtime;
+//   const genreElement = document.createElement('p');
+//   yearElement.textContent = movieData.Genre;
+//   const directorElement = document.createElement('p');
+//   yearElement.textContent = movieData.Director;
+//   const writerElement = document.createElement('p');
+//   yearElement.textContent = movieData.Writer;
+//   const actorsElement = document.createElement('p');
+//   yearElement.textContent = movieData.Actors;
+//   const plotElement = document.createElement('p');
+//   yearElement.textContent = movieData.Plot;
+//   const languageElement = document.createElement('p');
+//   yearElement.textContent = movieData.Language;
+//   const countryElement = document.createElement('p');
+//   yearElement.textContent = movieData.Country;
+//   const awardsElement = document.createElement('p');
+//   yearElement.textContent = movieData.Awards;
+//   const posterElement = document.createElement('p');
+//   yearElement.textContent = movieData.Poster;
+//   Rating:
+
+//   const metascoreElement = document.createElement('p');
+//   yearElement.textContent = movieData.Metascore;
+//   const imdbratingElement = document.createElement('p');
+//   yearElement.textContent = movieData.imdbRating;
+//   const imdbvotesElement = document.createElement('p');
+//   yearElement.textContent = movieData.imdbVotes;
+//   // Add more elements for other details as needed
+
+//   // Append the elements to the container
+//   movieDetailsContainer.appendChild(titleElement);
+//   movieDetailsContainer.appendChild(yearElement);
+//   movieDetailsContainer.appendChild(ratedElement);
+//   movieDetailsContainer.appendChild(releasedElement);
+//   movieDetailsContainer.appendChild(runtimeElement);
+//   movieDetailsContainer.appendChild(genreElement);
+//   movieDetailsContainer.appendChild(directorElement);
+//   movieDetailsContainer.appendChild(writerElement);
+//   movieDetailsContainer.appendChild(actorsElement);
+//   movieDetailsContainer.appendChild(plotElement);
+//   movieDetailsContainer.appendChild(languageElement);
+//   movieDetailsContainer.appendChild(countryElement);
+
+//   // Add more elements to display other details
+// }
+
+
+function displayMovieData(movieData) {
+  let card = document.createElement('div')
+  let ratings = document.createElement('div');
+  for (let i = 0; i < movieData.Ratings.length; i++) {
+    let source = document.createElement('source');
+    let value = document.createElement('value');
+    source.textContent = movieData.Ratings[i].Source;
+    value.textContent = movieData.Ratings[i].Value;
+    ratings.append(source);
+    ratings.append(value);
+  }
+  card.innerHTML(`
+    <h3>${movieData.Title}</h3>
+    <p>${movieData.Year}</p>
+    <p>${movieData.Released}</p>
+    <p>${movieData.Runtime}</p>
+    <p>${movieData.Genre}</p>
+    <p>${movieData.Director}</p>
+    <p>${movieData.Writer}</p>
+    <p>${movieData.Actors}</p>
+    <p>${movieData.Plot}</p>
+    <p>${movieData.Awards}</p>
+    <img src = ${movieData.Poster}></img>
+    `)
+  card.append('ratings')
+}  
+
+
+
+
 
 function displayReddit(data) {
   let card = document.createElement('div')
