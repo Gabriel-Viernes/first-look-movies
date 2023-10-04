@@ -23,6 +23,9 @@
 //     console.error('Fetch error:', error);
 //   });
 
+let omdbElement = document.getElementById('placeholder omdb element');
+let redditElement = document.getElementById('placeholder reddit id')
+
 
 // encodeURIComponent replaces non english characters with escape sequences that can be read by APIs
 async function getOmdbData(movieTitle) {
@@ -46,11 +49,6 @@ async function getOmdbData(movieTitle) {
 
 async function getRedditAPI(input) {
     let url = `https://api.reddit.com/r/movies/search/?q=${encodeURIComponent(input)}&restrict_sr=1`
-}
-
-
-async function getRedditAPI(input) {
-    let url = `https://api.reddit.com/r/movies/search/?q=${input}&restrict_sr=1`
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -62,5 +60,31 @@ async function getRedditAPI(input) {
     }
     return data;
 }
+
+async function displaySearch() {
+  let input = document.getElementById('movie-search').value;
+  if (input === '') {
+    console.log('nothing inputted');
+  } else {
+    let omdbData = await getOmdbData(input);
+    let redditData = await getRedditAPI(input);
+  }
+}
+
+function displayReddit(data) {
+  let card = document.createElement('div')
+  for (let i = 0; i < data.data.children.length; i++) {
+    card.innerHTML(`
+      <h3>${data.data.children[i].data.title}<a href = ${data.data.children[i].data.url}>[Link]</a></h3>
+      <p>${data.data.children[i].data.author}</p>
+      ${data.data.children[i].data.selftext_html}
+    `)
+  }
+  document.getElementById('placeholder').append(card)
+
+}
+// placeholder id for submit
+document.getElementById('//placeholder for submit button').addEventListener('click', displaySearch);
+
 
 
