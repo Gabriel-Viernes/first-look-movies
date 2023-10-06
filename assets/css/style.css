@@ -24,21 +24,6 @@ nav{
 span{
     color: red;
 }
-nav ul li{
-    list-style-type: none;
-    display: inline-block;
-    padding: 10px 25px;
-}
-nav ul li a{
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: capitalize;
-}
-    nav ul li a:hover{
-color: red;
-transition: .4s;
-}
 .content{
     margin-top:15em;
     margin-left:10em;
@@ -49,7 +34,7 @@ h1{
     margin: 20px 0px 20px;
     font-size: 75px;
 }
-    h3{
+h3 {
     color: black;
     font-size: 25px;
     margin-bottom: 50px;
@@ -73,6 +58,7 @@ h4{
     border-radius: 30px;
 
 }
+
 .search-bar form button{
 position: absolute;
 display: inline-block;
@@ -99,7 +85,7 @@ right: 6px;
     box-shadow: 0px 0px 5px #000, 0px 0px 15px #858585;
     top: 6px;
     right: 6px;
-    }
+}
 
 .about{
     width: 100%;
@@ -108,52 +94,13 @@ right: 6px;
 
 }
 
-
-.main{
-    padding-left: 50px;
-    width: 1000px;
-    max-width: 95%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-.about-text h2{
-    padding-left: 50px;
-    color: white;
-    font-size: 75px;
-    text-transform: capitalize;
-    margin-bottom: 20px;
-
-}
-.about-text h5{
-    color:white;
-    letter-spacing: 2px;
-    font-size: 22px;
-    margin-bottom: 25px;
-    text-transform: capitalize;
-}
-.about-text p{
-    padding-left: 50px;
-    color: white;
-    letter-spacing: 1px;
-    line-height: 28px;
-    font-size:18;
-    margin-bottom: 45px;
-}
-.OMDB{
-    background-color: #5d30ac;
-    padding-left: 50px;
-    padding-bottom: 300px;
-}
-.Prof-dev{
-    background-color: #53d113;
-    padding-left: 50px;
-    padding-bottom: 300px;
-}
 body{
     background-color: #40528e;
 }
+#omdb {
+    width:50%;
+}
+
 #omdb-inner {
     background-color:white;
     justify-content: center;

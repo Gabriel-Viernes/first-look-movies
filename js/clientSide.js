@@ -7,86 +7,12 @@
 // REDDIT USERNAME: movieLookup
 // REDDIT PASSWORD: keyboard
 
-// fetch(apiUrl)
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok');
-//     }
-//     return response.json();
-//   })
-//   .then(data => {
-//     // Handle the data received from the OMDB API
-//     console.log(data);
-//   })
-//   .catch(error => {
-//     // Handle any errors that occurred during the fetch
-//     console.error('Fetch error:', error);
-//   });
-
-// function displayMovieData(movieData) {
-//   const movieDetailsContainer = document.getElementById('movieDetails');
-
-//   // Create HTML elements to display the movie details
-//   const titleElement = document.createElement('h1');
-//   titleElement.textContent = movieData.Title;
-//   const yearElement = document.createElement('p');
-//   yearElement.textContent = `Year: ${movieData.Year}`;
-//   const ratedElement = document.createElement('p');
-//   yearElement.textContent = movieData.Rated;
-//   const releasedElement = document.createElement('p');
-//   yearElement.textContent = movieData.Released;
-//   const runtimeElement = document.createElement('p');
-//   yearElement.textContent = movieData.Runtime;
-//   const genreElement = document.createElement('p');
-//   yearElement.textContent = movieData.Genre;
-//   const directorElement = document.createElement('p');
-//   yearElement.textContent = movieData.Director;
-//   const writerElement = document.createElement('p');
-//   yearElement.textContent = movieData.Writer;
-//   const actorsElement = document.createElement('p');
-//   yearElement.textContent = movieData.Actors;
-//   const plotElement = document.createElement('p');
-//   yearElement.textContent = movieData.Plot;
-//   const languageElement = document.createElement('p');
-//   yearElement.textContent = movieData.Language;
-//   const countryElement = document.createElement('p');
-//   yearElement.textContent = movieData.Country;
-//   const awardsElement = document.createElement('p');
-//   yearElement.textContent = movieData.Awards;
-//   const posterElement = document.createElement('p');
-//   yearElement.textContent = movieData.Poster;
-//   Rating:
-
-//   const metascoreElement = document.createElement('p');
-//   yearElement.textContent = movieData.Metascore;
-//   const imdbratingElement = document.createElement('p');
-//   yearElement.textContent = movieData.imdbRating;
-//   const imdbvotesElement = document.createElement('p');
-//   yearElement.textContent = movieData.imdbVotes;
-//   // Add more elements for other details as needed
-
-//   // Append the elements to the container
-//   movieDetailsContainer.appendChild(titleElement);
-//   movieDetailsContainer.appendChild(yearElement);
-//   movieDetailsContainer.appendChild(ratedElement);
-//   movieDetailsContainer.appendChild(releasedElement);
-//   movieDetailsContainer.appendChild(runtimeElement);
-//   movieDetailsContainer.appendChild(genreElement);
-//   movieDetailsContainer.appendChild(directorElement);
-//   movieDetailsContainer.appendChild(writerElement);
-//   movieDetailsContainer.appendChild(actorsElement);
-//   movieDetailsContainer.appendChild(plotElement);
-//   movieDetailsContainer.appendChild(languageElement);
-//   movieDetailsContainer.appendChild(countryElement);
-
-//   // Add more elements to display other details
-// }
-
 let omdbElement = document.getElementById('ombd');
 let redditElement = document.getElementById('reddit')
 
 
 // encodeURIComponent replaces non english characters with escape sequences that can be read by APIs
+// fetches data from OMDB
 async function getOmdbData(movieTitle) {
     const apiUrl = `http://www.omdbapi.com/?apikey=4efa80bc&t=${encodeURIComponent(movieTitle)}`
     try {
@@ -105,6 +31,7 @@ async function getOmdbData(movieTitle) {
     }
 }
 
+// fetches data from Reddit
 async function getRedditAPI(input) {
     let url = `https://api.reddit.com/r/movies/search/?q=${encodeURIComponent(input)}&restrict_sr=1`
     try {
@@ -119,20 +46,18 @@ async function getRedditAPI(input) {
     }
 }
 
+// master function to retireve API data and display it
 async function displaySearch() {
   let input;
   if(this.getAttribute('id') === 'submitBtn') {
-    console.log(this)
     input = document.getElementById('movieSearch').value;
     document.querySelector('.content').remove();
     document.getElementById('searchBarHidden').setAttribute('style', 'margin-bottom:.5em')
   } else {
     input = document.getElementById('movieSearchHidden').value;
-    console.log(this)
   }
-  console.log('button pressed')
   if (input === '') {
-    console.log('nothing inputted');
+    alert('Please enter the exact title of the movie')
   } else {
     let omdbData = await getOmdbData(input);
     let redditData = await getRedditAPI(input);  
@@ -140,9 +65,9 @@ async function displaySearch() {
     displayMovieData(omdbData);
     displayReddit(redditData);
   }
-
 }
 
+// displays OMDB data
 function displayMovieData(movieData) {
   document.getElementById('omdb').innerHTML = ``;
   let ratings = document.createElement('div');
@@ -169,6 +94,7 @@ function displayMovieData(movieData) {
   document.getElementById('omdb-inner').append(ratings);
 }  
 
+// displays Reddit Data
 function displayReddit(data) {
   document.getElementById('reddit').innerHTML = ``;
   document.getElementById('reddit').innerHTML = `
@@ -181,10 +107,11 @@ function displayReddit(data) {
       <p>${data.data.children[i].data.author}</p>
       <p>${data.data.children[i].data.selftext}</p>
     `;
-    console.log('card created')
     document.getElementById('reddit').append(card)
   }
 }
+
+// two buttons, one primary and one hidden
 let button = document.getElementById('submitBtn')
 let buttonHidden = document.getElementById('submitBtnHidden')
 button.addEventListener('click', displaySearch);
