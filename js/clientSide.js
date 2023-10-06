@@ -23,62 +23,6 @@
 //     console.error('Fetch error:', error);
 //   });
 
-let omdbElement = document.getElementById('placeholder omdb element');
-let redditElement = document.getElementById('placeholder reddit id')
-
-
-// encodeURIComponent replaces non english characters with escape sequences that can be read by APIs
-async function getOmdbData(movieTitle) {
-    const apiUrl = `http://www.omdbapi.com/?apikey=4efa80bc&t=${encodeURIComponent(movieTitle)}`
-    try {
-      const response = await fetch(apiUrl);
-  
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-  
-      const data = await response.json();
-      // Handle the data received from the OMDB API
-      console.log(data);
-    } catch (error) {
-      // Handle any errors that occurred during the fetch
-      console.error('Fetch error:', error);
-    }
-    return data;
-}
-
-async function getRedditAPI(input) {
-    let url = `https://api.reddit.com/r/movies/search/?q=${encodeURIComponent(input)}&restrict_sr=1`
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Reddit network response failed');
-        }
-        const data = await response.json();
-    } catch (error) {
-        console.error('Reddit fetch error:' + error)
-    }
-    return data;
-}
-
-async function displaySearch() {
-  let input = document.getElementById('movie-search').value;
-  if (input === '') {
-    console.log('nothing inputted');
-  } else {
-    let omdbData = await getOmdbData(input);
-    let redditData = await getRedditAPI(input);
-    // negash's function
-
-
-
-  
-    // Call the fetchMovieData function to fetch and display the data
-    displayMovieData();
-    displayReddit(redditData);
-  }
-}
-
 // function displayMovieData(movieData) {
 //   const movieDetailsContainer = document.getElementById('movieDetails');
 
@@ -138,52 +82,113 @@ async function displaySearch() {
 //   // Add more elements to display other details
 // }
 
+let omdbElement = document.getElementById('ombd');
+let redditElement = document.getElementById('reddit')
 
-function displayMovieData(movieData) {
-  let card = document.createElement('div')
-  let ratings = document.createElement('div');
-  for (let i = 0; i < movieData.Ratings.length; i++) {
-    let source = document.createElement('source');
-    let value = document.createElement('value');
-    source.textContent = movieData.Ratings[i].Source;
-    value.textContent = movieData.Ratings[i].Value;
-    ratings.append(source);
-    ratings.append(value);
+
+// encodeURIComponent replaces non english characters with escape sequences that can be read by APIs
+async function getOmdbData(movieTitle) {
+    const apiUrl = `http://www.omdbapi.com/?apikey=4efa80bc&t=${encodeURIComponent(movieTitle)}`
+    try {
+      const response = await fetch(apiUrl);
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      return data;
+      // Handle the data received from the OMDB API
+    } catch (error) {
+      // Handle any errors that occurred during the fetch
+      console.error('Fetch error:', error);
+    }
+}
+
+async function getRedditAPI(input) {
+    let url = `https://api.reddit.com/r/movies/search/?q=${encodeURIComponent(input)}&restrict_sr=1`
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Reddit network response failed');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Reddit fetch error:' + error)
+    }
+}
+
+async function displaySearch() {
+  let input;
+  if(this.getAttribute('id') === 'submitBtn') {
+    console.log(this)
+    input = document.getElementById('movieSearch').value;
+    document.querySelector('.content').remove();
+    document.getElementById('searchBarHidden').setAttribute('style', 'margin-bottom:.5em')
+  } else {
+    input = document.getElementById('movieSearchHidden').value;
+    console.log(this)
   }
-  card.innerHTML(`
-    <h3>${movieData.Title}</h3>
-    <p>${movieData.Year}</p>
-    <p>${movieData.Released}</p>
-    <p>${movieData.Runtime}</p>
-    <p>${movieData.Genre}</p>
-    <p>${movieData.Director}</p>
-    <p>${movieData.Writer}</p>
-    <p>${movieData.Actors}</p>
-    <p>${movieData.Plot}</p>
-    <p>${movieData.Awards}</p>
-    <img src = ${movieData.Poster}></img>
-    `)
-  card.append('ratings')
-}  
-
-
-
-
-
-function displayReddit(data) {
-  let card = document.createElement('div')
-  for (let i = 0; i < data.data.children.length; i++) {
-    card.innerHTML(`
-      <h3>${data.data.children[i].data.title}<a href = ${data.data.children[i].data.url}>[Link]</a></h3>
-      <p>${data.data.children[i].data.author}</p>
-      ${data.data.children[i].data.selftext_html}
-    `)
+  console.log('button pressed')
+  if (input === '') {
+    console.log('nothing inputted');
+  } else {
+    let omdbData = await getOmdbData(input);
+    let redditData = await getRedditAPI(input);  
+    // Call the fetchMovieData function to fetch and display the data
+    displayMovieData(omdbData);
+    displayReddit(redditData);
   }
-  document.getElementById('placeholder').append(card)
 
 }
-// placeholder id for submit
-document.getElementById('//placeholder for submit button').addEventListener('click', displaySearch);
+
+function displayMovieData(movieData) {
+  document.getElementById('omdb').innerHTML = ``;
+  let ratings = document.createElement('div');
+  for (let i = 0; i < movieData.Ratings.length; i++) {
+    let source = document.createElement('h2');
+    source.textContent = `
+      ${movieData.Ratings[i].Source} || ${movieData.Ratings[i].Value}
+    `
+    ratings.append(source);
+  }
+  document.getElementById('omdb').innerHTML = `
+    <div id = "omdb-inner">
+      <h2> ${movieData.Title}</h2>
+      <p>Released: ${movieData.Released} | Runtime: ${movieData.Runtime}</p>
+      <p>${movieData.Genre}</p>
+      <p>Director: ${movieData.Director} | ${movieData.Writer} | ${movieData.Actors}</p>
+      <p style= 'width:60%; margin:auto;'>${movieData.Plot}</p>
+      <p>${movieData.Awards}</p>
+      <img src = ${movieData.Poster}></img>
+    </div>
+  `;
+
+
+  document.getElementById('omdb-inner').append(ratings);
+}  
+
+function displayReddit(data) {
+  document.getElementById('reddit').innerHTML = ``;
+  document.getElementById('reddit').innerHTML = `
+    <h1>See what people on Reddit are saying!</h1>
+  `
+  for (let i = 0; i < data.data.children.length; i++) {
+    let card = document.createElement('div')
+    card.innerHTML= `
+      <h3>${data.data.children[i].data.title}<a href = ${data.data.children[i].data.url}>[Link]</a></h3>
+      <p>${data.data.children[i].data.author}</p>
+      <p>${data.data.children[i].data.selftext}</p>
+    `;
+    console.log('card created')
+    document.getElementById('reddit').append(card)
+  }
+}
+let button = document.getElementById('submitBtn')
+let buttonHidden = document.getElementById('submitBtnHidden')
+button.addEventListener('click', displaySearch);
+buttonHidden.addEventListener('click', displaySearch);
 
 
 
