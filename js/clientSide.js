@@ -125,7 +125,7 @@ async function displaySearch() {
     console.log(this)
     input = document.getElementById('movieSearch').value;
     document.querySelector('.content').remove();
-    document.getElementById('')
+    document.getElementById('searchBarHidden').setAttribute('style', 'margin-bottom:.5em')
   } else {
     input = document.getElementById('movieSearchHidden').value;
     console.log(this)
