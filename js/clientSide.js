@@ -154,17 +154,19 @@ function displayMovieData(movieData) {
     ratings.append(source);
   }
   document.getElementById('omdb').innerHTML = `
-    <h2> ${movieData.Title}</h2>
-    <p>Released: ${movieData.Released} | Runtime: ${movieData.Runtime}</p>
-    <p>${movieData.Genre}</p>
-    <p>Director: ${movieData.Director} | ${movieData.Writer} | ${movieData.Actors}</p>
-    <p>${movieData.Plot}</p>
-    <p>${movieData.Awards}</p>
-    <img src = ${movieData.Poster}></img>
+    <div id = "omdb-inner">
+      <h2> ${movieData.Title}</h2>
+      <p>Released: ${movieData.Released} | Runtime: ${movieData.Runtime}</p>
+      <p>${movieData.Genre}</p>
+      <p>Director: ${movieData.Director} | ${movieData.Writer} | ${movieData.Actors}</p>
+      <p style= 'width:60%; margin:auto;'>${movieData.Plot}</p>
+      <p>${movieData.Awards}</p>
+      <img src = ${movieData.Poster}></img>
+    </div>
   `;
 
 
-  document.getElementById('omdb').append(ratings);
+  document.getElementById('omdb-inner').append(ratings);
 }  
 
 function displayReddit(data) {
