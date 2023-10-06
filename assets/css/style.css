@@ -39,11 +39,9 @@ nav ul li a{
 color: red;
 transition: .4s;
 }
-    .content{
-    position: absolute;
-    top: 50%;
-    left: 8%;
-    transform: translateY(-50%);
+.content{
+    margin-top:15em;
+    margin-left:10em;
 
 }
 h1{
@@ -75,7 +73,7 @@ h4{
     border-radius: 30px;
 
 }
-.search-bar form input:last-child{
+.search-bar form button{
 position: absolute;
 display: inline-block;
 outline: none;
@@ -87,8 +85,22 @@ color: white;
 box-shadow: 0px 0px 5px #000, 0px 0px 15px #858585;
 top: 6px;
 right: 6px;
-
 }
+
+.search-bar form button:hover {
+    position: absolute;
+    display: inline-block;
+    outline: none;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 30px;
+    background-color: white;
+    color: #f9004d;
+    box-shadow: 0px 0px 5px #000, 0px 0px 15px #858585;
+    top: 6px;
+    right: 6px;
+    }
+
 .about{
     width: 100%;
     padding: 100% 0px;
@@ -141,4 +153,36 @@ right: 6px;
 }
 body{
     background-color: #40528e;
+}
+#omdb {
+    background-color:white;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5em;
+    width: 60%;
+    border-radius: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+}
+
+#reddit {
+    width: 60%;
+    margin:auto;
+}
+
+#reddit h1 {
+    background-color:white;
+    margin: .5em .5em .5em .5em;
+    border-radius: 10px;
+    border: .5em solid white;
+    text-align:center;
+}
+
+#reddit div {
+    background-color:white;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 10px;
+    border: 1em solid white;
 }

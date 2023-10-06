@@ -13,27 +13,26 @@
 
     <nav>
         <h2 class="logo">FirstLook<span>Movies</span></h2>
-        <ul>
-            
-            <li><a href="#section3">Movies in Theater</a> </li>
-            <li><a href="#section1">Trailors</a> </li>
-            <li><a href="#section2">Reddit</a> </li>
-            <li><a href="mailto:liamandell14@gmail.com">Contact us</a> </li>
-        </ul>
+        <div class="search-bar" id = 'searchBarHidden'>
+            <form>
+                <input id="movieSearchHidden" placeholder="Enter a Movie Name"></input>
+                <button id="submitBtnHidden" type="button">Search</button>
+            </form>
+        </div>
     </nav>
     <div class="content">
         <h4> Welcome to First Look Movies</h4>
         <h1>Find a rating your looking for</h1>
         <div class="search-bar">
             <form>
-                <input id="movie-search" placeholder="enter a movie">
-                <input type="submit" name="submit" value="Search">
+                <input id="movieSearch" placeholder="Enter a Movie Name"></input>
+                <button id="submitBtn" type="button">Search</button>
             </form>
         </div>
     </div>
 
     <div id="omdb"></div>
     <div id="reddit"></div>
-
+    <script src = "./js/clientSide.js"></script>
 </body>
 </html>
