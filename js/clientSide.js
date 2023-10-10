@@ -14,7 +14,7 @@ let redditElement = document.getElementById('reddit')
 // encodeURIComponent replaces non english characters with escape sequences that can be read by APIs
 // fetches data from OMDB
 async function getOmdbData(movieTitle) {
-    const apiUrl = `http://www.omdbapi.com/?apikey=4efa80bc&t=${encodeURIComponent(movieTitle)}`
+    const apiUrl = `https://www.omdbapi.com/?apikey=4efa80bc&t=${encodeURIComponent(movieTitle)}`
     try {
       const response = await fetch(apiUrl);
   
