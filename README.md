@@ -14,3 +14,5 @@ Liam Andell, Gabriel Viernes, Negash Tseganeh, and Nikki Vargas.
 Please refer to the LICENSE in the repo. This project is licensed under the MIT License.
 
 ## Screenshot
+![Screenshot 2023-10-05 204322](https://github.com/Gabriel-Viernes/first-look-movies/assets/128064997/d0a7099d-b442-4a65-b7e1-349aa890a556)
+
