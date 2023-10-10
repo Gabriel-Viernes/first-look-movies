@@ -14,7 +14,7 @@ let redditElement = document.getElementById('reddit')
 // encodeURIComponent replaces non english characters with escape sequences that can be read by APIs
 // fetches data from OMDB
 async function getOmdbData(movieTitle) {
-    const apiUrl = `http://www.omdbapi.com/?apikey=4efa80bc&t=${encodeURIComponent(movieTitle)}`
+    const apiUrl = `https://www.omdbapi.com/?apikey=4efa80bc&t=${encodeURIComponent(movieTitle)}`
     try {
       const response = await fetch(apiUrl);
   
@@ -96,18 +96,32 @@ function displayMovieData(movieData) {
 
 // displays Reddit Data
 function displayReddit(data) {
+  let selfText;
   document.getElementById('reddit').innerHTML = ``;
   document.getElementById('reddit').innerHTML = `
     <h1>See what people on Reddit are saying!</h1>
   `
   for (let i = 0; i < data.data.children.length; i++) {
+  selfText = shortenText(data.data.children[i].data.selftext)
+  console.log(selfText)
     let card = document.createElement('div')
     card.innerHTML= `
       <h3>${data.data.children[i].data.title}<a href = ${data.data.children[i].data.url}>[Link]</a></h3>
-      <p>${data.data.children[i].data.author}</p>
-      <p>${data.data.children[i].data.selftext}</p>
+      <h4>/u/${data.data.children[i].data.author}</h4>
+      <p>${selfText}</p>
     `;
     document.getElementById('reddit').append(card)
+  }
+}
+
+//used to shorten reddit posts
+function shortenText(input) {
+  if(input.length > 250) {
+    let temp = input.slice(0,250)
+    temp = temp + "..."
+    return temp;
+  } else {
+    return input;
   }
 }
 
