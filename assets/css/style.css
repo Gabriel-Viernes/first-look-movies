@@ -37,7 +37,7 @@ h1{
 h3 {
     color: black;
     font-size: 25px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 h4{
     color: #f9004d;
@@ -113,6 +113,10 @@ body{
     text-align:center;
 }
 
+#omdb-inner h2 {
+    font-size:3em;
+}
+
 #reddit {
     width: 40%;
     margin:auto;
@@ -124,6 +128,7 @@ body{
     border-radius: 10px;
     border: .5em solid white;
     text-align:center;
+    font-size:4em;
 }
 
 #reddit div {
@@ -137,4 +142,18 @@ body{
 .dataContainer {
     display:flex;
     flex-direction:row;
+}
+
+@media (max-width:1000px) {
+    .dataContainer {
+        flex-direction:column;
+    }
+    #reddit {
+        width:80%;
+        margin:auto;
+    }
+    #omdb {
+        width:80%;
+        margin:auto;
+    }
 }

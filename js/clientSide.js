@@ -96,18 +96,32 @@ function displayMovieData(movieData) {
 
 // displays Reddit Data
 function displayReddit(data) {
+  let selfText;
   document.getElementById('reddit').innerHTML = ``;
   document.getElementById('reddit').innerHTML = `
     <h1>See what people on Reddit are saying!</h1>
   `
   for (let i = 0; i < data.data.children.length; i++) {
+  selfText = shortenText(data.data.children[i].data.selftext)
+  console.log(selfText)
     let card = document.createElement('div')
     card.innerHTML= `
       <h3>${data.data.children[i].data.title}<a href = ${data.data.children[i].data.url}>[Link]</a></h3>
-      <p>${data.data.children[i].data.author}</p>
-      <p>${data.data.children[i].data.selftext}</p>
+      <h4>/u/${data.data.children[i].data.author}</h4>
+      <p>${selfText}</p>
     `;
     document.getElementById('reddit').append(card)
+  }
+}
+
+//used to shorten reddit posts
+function shortenText(input) {
+  if(input.length > 250) {
+    let temp = input.slice(0,250)
+    temp = temp + "..."
+    return temp;
+  } else {
+    return input;
   }
 }
 
