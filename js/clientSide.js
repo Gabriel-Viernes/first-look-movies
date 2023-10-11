@@ -71,6 +71,14 @@ async function displaySearch() {
 function displayMovieData(movieData) {
   document.getElementById('omdb').innerHTML = ``;
   let ratings = document.createElement('div');
+  if (movieData.Title === undefined) {
+    document.getElementById('omdb').innerHTML = `
+    <div id = "omdb-inner">
+      <h2>Movie Not Found!</h2>
+    </div>
+    `
+    return;
+  }
   for (let i = 0; i < movieData.Ratings.length; i++) {
     let source = document.createElement('h2');
     source.textContent = `
@@ -103,7 +111,6 @@ function displayReddit(data) {
   `
   for (let i = 0; i < data.data.children.length; i++) {
   selfText = shortenText(data.data.children[i].data.selftext)
-  console.log(selfText)
     let card = document.createElement('div')
     card.innerHTML= `
       <h3>${data.data.children[i].data.title}<a href = ${data.data.children[i].data.url}>[Link]</a></h3>
